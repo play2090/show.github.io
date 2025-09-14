@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحة فضائية متحركة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo+Play&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Cairo Play', sans-serif;
+      height: 100vh;
+      background: black;
+      color: #00aaff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 40px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .rocket {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/3214/3214603.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fly 8s linear infinite;
+    }
+
+    @keyframes fly {
+      0% {
+        top: 100%;
+        left: -50px;
+        transform: rotate(45deg);
+      }
+      100% {
+        top: -100px;
+        left: 110%;
+        transform: rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <!-- توليد نجوم عشوائية -->
+    <script>
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        document.querySelector('.stars').appendChild(star);
+      }
+    </script>
+  </div>
+  <div class="rocket"></div>
+  <h1>عفوا، لا يوجد شيء هنا 🚀</h1>
+</body>
+</html>
